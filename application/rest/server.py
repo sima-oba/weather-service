@@ -66,7 +66,7 @@ def create_server(config):
     root_bp.register_blueprint(weather_st_bp)
 
     observed_weather_bp = observed_weather.get_blueprint(weather_st_svc)
-    auth.require_authorization_for_any_request(observed_weather_bp)
+    # auth.require_authorization_for_any_request(observed_weather_bp)
     root_bp.register_blueprint(observed_weather_bp)
 
     rainfall_repo = RainfallRepository(db)
