@@ -11,12 +11,10 @@ def get_blueprint(service: RainfallService) -> Blueprint:
     query = RainfallQuery()
 
     @bp.get('/')
-    @cache_for(weeks=1)
     def get_stations():
         return jsonify(service.get_stations())
 
     @bp.get('/geojson')
-    @cache_for(weeks=1)
     def get_stations_as_geojson():
         stations = service.get_stations()
         features = utils.export_feature_collection(stations, 'geometry')
